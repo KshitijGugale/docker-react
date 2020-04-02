@@ -1,0 +1,23 @@
+version: '3'   #version number
+services:   # containers
+  web:  #name for container
+    build:   #build the image
+      context: .  #says that required files are located at current directory,
+      dockerfile: Dockerfile.Dev    #dockerfile name, we did this just because we have .dev file
+    ports:  #list of port numbers
+      - "3000:3000"
+    volumes:  #voulmes to exclude and include files
+      - /app/node_modules   #it means do not map node_modules folder from container to anywhere on local
+      - .:/app    #map current directory from local to app folder in container
+    tty: true
+    stdin_open: true
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.Dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
+    tty: true
+    stdin_open: true

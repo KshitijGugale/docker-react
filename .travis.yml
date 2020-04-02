@@ -8,3 +8,19 @@ before_install: # run some command before the installation, may be build a docke
 
 script:
   - docker run -e CI=true kshitijgugale/docker-react npm run test -- --coverage
+
+# now login to aws and go to elasticbeanstalk (EB) and the below information from there
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1" # get the region
+  app: "docker-react" # app name from EB's page
+  env: "DockerReact-env" # a name next to app name on EB's home page
+  bucket_name: "elasticbeanstalk-us-east-1-044007797075"  # S3 bucket name
+  bucket_path: "docker-react" # same as the app name, most of the time
+  on:
+    branch: master  # the branch name from where the deployment needs to be done
+  # create a IAM user, set policy as aws_beanstalk_full_control
+  # go to the travis site, and in our project, go to setting and those 2 environmental variables- AWS_ACCESS_KEY & AWS_SECRET_KEY
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"

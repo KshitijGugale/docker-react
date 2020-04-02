@@ -1,3 +1,4 @@
+language: generic
 sudo: required  # give all permissions
 services:
   - docker  # to make sure that docker cli is running
@@ -6,4 +7,4 @@ before_install: # run some command before the installation, may be build a docke
   - docker build -t kshitijgugale/docker-react -f Dockerfile.Dev .
 
 script:
-  - docker run kshitijgugale/docker-react npm run test -- --coverage
+  - docker run -e CI=true kshitijgugale/docker-react npm run test -- --coverage

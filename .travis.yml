@@ -22,5 +22,4 @@ deploy:
   # create a IAM user, set policy as aws_beanstalk_full_control
   # go to the travis site, and in our project, go to setting and those 2 environmental variables- AWS_ACCESS_KEY & AWS_SECRET_KEY
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  secret_access_key: $AWS_SECRET_KEY

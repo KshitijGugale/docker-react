@@ -1,0 +1,9 @@
+sudo: required  # give all permissions
+services:
+  - docker  # to make sure that docker cli is running
+
+before_install: # run some command before the installation, may be build a docker a file
+  - docker build -t kshitijgugale/docker-react -f Dockerfile.Dev .
+
+script:
+  - docker run kshitijgugale/docker-react npm run test -- --coverage

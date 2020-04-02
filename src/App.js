@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Welcome to the world, Kshitij Gugale.
+          Welcome to the world, Kshitij Gugale. You have implemented CI/CD. Congrats!
         </p>
         <a
           className="App-link"
